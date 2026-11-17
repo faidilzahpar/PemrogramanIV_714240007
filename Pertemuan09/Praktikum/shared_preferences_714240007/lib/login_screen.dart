@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home_screen.dart';
+import 'botnav.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
     checkLogin();
   }
 
+  @override
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
@@ -49,13 +50,14 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const MyHome(),
+          builder: (context) => const DynamicBottomNavBar(),
         ),
         (route) => false,
       );
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -117,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const MyHome(),
+                              builder: (context) => const DynamicBottomNavBar(),
                             ),
                             (route) => false,
                           );
